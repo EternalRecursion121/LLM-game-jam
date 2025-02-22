@@ -7,8 +7,8 @@ An interactive choose-your-own-adventure game powered by Google's Gemini AI. The
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd rpg
+git clone https://github.com/EternalRecursion121/LLM-game-jam.git
+cd LLM-game-jam
 ```
 
 2. Create and activate a virtual environment:
