@@ -1,11 +1,36 @@
-# Fantasy Text Adventure Game
+# Fantasy Text Adventure Game Template
 
-An interactive choose-your-own-adventure game powered by Google's Gemini AI. The game features a persistent inventory system, dynamic storytelling, and an atmospheric interface.
+A customizable text adventure game template powered by Google's Gemini AI that provides a solid foundation for building AI-powered narrative games.
 
+## Features
+
+- Ready-to-use game engine
+- AI-powered dynamic storytelling
+- Persistent inventory and game state
+- Atmospheric UI with animations
+- Easy to customize and extend
+
+## Project Structure
+
+```
+.
+├── game/
+│   ├── __init__.py
+│   ├── models.py        # Data models
+│   ├── game_logic.py    # Core game mechanics
+│   ├── ai_interface.py  # AI interaction logic
+│   ├── templates/       # HTML templates
+│   │   └── game.html
+│   └── static/         # CSS and JavaScript
+│       └── style.css
+├── main.py             # Application entry point
+├── requirements.txt
+└── README.md
+```
 
 ## Setup
 
-1. Clone the repository:
+1. Clone the template:
 ```bash
 git clone https://github.com/EternalRecursion121/LLM-game-jam.git
 cd LLM-game-jam
@@ -22,63 +47,77 @@ source venv/bin/activate  # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory with your Gemini API key:
+4. Create a `.env` file:
 ```
 GEMINI_API_KEY=your_api_key_here
 ```
 
 To get a Gemini API key:
-- Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-- Create or select a project
-- Generate an API key
-- Copy the key to your `.env` file
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy the generated key and paste it in your `.env` file
 
-5. Run the application:
+5. Run the game:
 ```bash
-python rpg/main.py
+python main.py
 ```
 
-6. Open your browser and navigate to:
-```
-http://localhost:5000
-```
+## Customization Guide
 
-## Game Controls
+### 1. Modify Game Content
 
-- Read the story text and current situation
-- Choose your actions by clicking one of the available options
-- Monitor your inventory (health, gold, and items) as you progress
-- The game maintains a history of your choices and adapts the story accordingly
+Edit `game/game_logic.py` to customize:
+- Starting conditions
+- Game mechanics
+- Victory/failure conditions
 
-## Technical Details
+### 2. Adjust AI Behavior
 
-- Built with Flask web framework
-- Uses Google's Gemini AI for dynamic storytelling
-- Pydantic models for data validation
-- Session-based state management
-- Responsive design with custom CSS animations
+Edit `game/ai_interface.py` to modify:
+- Story generation prompts
+- AI response parsing
+- Choice generation
+
+### 3. Change the Look and Feel
+
+Edit `game/templates/game.html` and `game/static/style.css` to:
+- Customize the UI
+- Add new visual elements
+- Modify animations
+
+### 4. Extend Game Features
+
+Some ideas to get you started:
+- Add combat mechanics
+- Implement a save/load system
+- Create character classes
+- Add multiplayer support
+- Integrate different AI models
 
 ## Requirements
 
-See `requirements.txt` for a full list of dependencies. Key requirements:
 - Python 3.7+
 - Flask
 - google-genai
 - pydantic
 - python-dotenv
 
-## Development
-
-To run in debug mode (recommended for development):
-```bash
-export FLASK_ENV=development  # On Windows use: set FLASK_ENV=development
-python rpg/main.py
-```
-
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+Feel free to:
+- Fork and customize
+- Submit bug fixes
+- Suggest improvements
+- Share your creations
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](LICENSE) - Feel free to use this template for your projects!
+
+## Acknowledgments
+
+Built with:
+- Google Gemini AI
+- Flask
+- Pydantic

@@ -1,0 +1,160 @@
+body { 
+    font-family: 'IM Fell English', serif;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #0a0a0f;
+    color: #c4c4c4;
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(29, 38, 54, 0.2), rgba(10, 10, 15, 0.4)),
+        linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95));
+}
+
+.location { 
+    font-size: 2rem;
+    color: #d4b16a;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(212, 177, 106, 0.3);
+    font-style: italic;
+}
+
+.description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+    text-shadow: 0 0 20px rgba(224, 224, 224, 0.1);
+}
+
+.inventory {
+    background: rgba(20, 24, 32, 0.7);
+    padding: 1.5rem;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(212, 177, 106, 0.2);
+    box-shadow: 
+        0 0 15px rgba(212, 177, 106, 0.1),
+        inset 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.inventory h3 {
+    color: #d4b16a;
+    margin-top: 0;
+    font-style: italic;
+    border-bottom: 1px solid rgba(212, 177, 106, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.choice-btn {
+    padding: 1rem 1.5rem;
+    background: rgba(20, 24, 32, 0.9);
+    color: #d4b16a;
+    border: 1px solid rgba(212, 177, 106, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    text-align: left;
+    position: relative;
+    width: 100%;
+}
+
+.choice-btn:hover {
+    background: rgba(212, 177, 106, 0.1);
+    border-color: rgba(212, 177, 106, 0.5);
+    transform: translateX(10px);
+    text-shadow: 0 0 5px rgba(212, 177, 106, 0.5);
+}
+
+.choice-btn::before {
+    content: '»';
+    position: absolute;
+    right: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.choice-btn:hover::before {
+    opacity: 1;
+}
+
+.game-over {
+    color: #ff4444;
+    font-weight: bold;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.game-over a {
+    color: #d4b16a;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+}
+
+.game-over a:hover {
+    color: #ff4444;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.description, .inventory, .choices {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-text {
+    color: #d4b16a;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(212, 177, 106, 0.3);
+    opacity: 0;
+    animation: pulse 2s infinite;
+}
+
+.loading-symbol {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(212, 177, 106, 0.3);
+    border-radius: 50%;
+    border-top-color: #d4b16a;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+} 

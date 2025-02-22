@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Whispers of the Forest</title>
+    <!-- Import medieval-style font and custom styling -->
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Loading overlay shown during AI response generation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-symbol"></div>
+        <div class="loading-text">The forest whispers...</div>
+    </div>
+    
+    <!-- Game state display -->
+    <div class="location">{{ game_state.current_location }}</div>
+    <div class="description">{{ game_state.description }}</div>
+    
+    <!-- Player inventory/stats section -->
+    <div class="inventory">
+        <h3>Your Possessions</h3>
+        <p>Vitality: {{ game_state.inventory.health }}</p>
+        <p>Gold Pieces: {{ game_state.inventory.gold }}</p>
+        <p>Carried Items: {{ ", ".join(game_state.inventory.items) if game_state.inventory.items else "Nothing but your courage" }}</p>
+    </div>
+
+    <!-- Choice buttons or game over message -->
+    {% if not game_state.game_over %}
+    <div class="choices">
+        {% for choice in game_state.choices %}
+        <form method="POST" action="/choose" onsubmit="showLoading()">
+            <input type="hidden" name="choice" value="{{ choice }}">
+            <button class="choice-btn" type="submit">{{ choice|safe }}</button>
+        </form>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="game-over">
+        The tale ends here... but another awaits. <a href="/" onclick="showLoading()">Begin Anew</a>
+    </div>
+    {% endif %}
+
+    <script>
+        // Show loading overlay and disable buttons when processing choice
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            // Prevent double-clicks by disabling all buttons
+            document.querySelectorAll('button').forEach(button => {
+                button.disabled = true;
+            });
+            return true;
+        }
+        
+        // Handle browser back button - ensure overlay is hidden
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                document.getElementById('loadingOverlay').style.display = 'none';
+                document.querySelectorAll('button').forEach(button => {
+                    button.disabled = false;
+                });
+            }
+        };
+    </script>
+</body>
+</html> 
