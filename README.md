@@ -1,4 +1,4 @@
-# Fantasy Text Adventure Game Template
+# Text Adventure Game Template
 
 A customizable text adventure game template powered by Google's Gemini AI that provides a solid foundation for building AI-powered narrative games.
 
