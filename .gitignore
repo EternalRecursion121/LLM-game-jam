@@ -1,0 +1,15 @@
+# Environment files
+.env
+.env.*
+*/.env
+*/.env.*
+
+# Virtual environment
+venv/
+
+# Cache files
+__pycache__/
+*.pyc
+
+# macOS store files
+.DS_Store
